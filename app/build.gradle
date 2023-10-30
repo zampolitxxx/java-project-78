@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+group = 'hexlet.code'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    options.release = 20
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+//    testImplementation platform('org.junit:junit-bom:5.9.1')
+//    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-params:5.9.3',
+            'org.slf4j-log4j12:2.0.7',
+            'org.assertj:assert-core:3.24.2'
+    )
+}
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+test {
+    useJUnitPlatform()
+}
