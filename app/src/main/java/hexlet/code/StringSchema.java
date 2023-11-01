@@ -1,21 +1,16 @@
 package hexlet.code;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
-
-public class StringSchema {
-    private static Map<String, Predicate> rules;
-    private static boolean nullable;
+public class StringSchema extends BaseSchema {
 
     public StringSchema() {
-        rules = new HashMap<>();
-        rules.put("required", String.class::isInstance);
-        StringSchema.nullable = true;
+        super();
     }
 
-    public void required() {
-        StringSchema.nullable = false;
+    @Override
+    public StringSchema required() {
+        super.required();
+        super.addRule("required", String.class::isInstance);
+        return this;
     }
 
 //    public StringSchema minLength(int minLength) {
@@ -24,14 +19,7 @@ public class StringSchema {
 //    }
 
     public StringSchema contains(String requiredString) {
-        rules.put("isContaine", x -> ((String) x).contains(requiredString));
+        super.addRule("contains", x -> ((String) x).contains(requiredString));
         return this;
-    }
-    public boolean isValid(Object obj) {
-        if (obj == null || obj.equals("")) {
-            return nullable;
-        }
-        return rules.values().stream()
-                .allMatch(predicate -> predicate.test(obj));
     }
 }
