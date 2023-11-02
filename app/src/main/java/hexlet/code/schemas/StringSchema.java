@@ -13,10 +13,10 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-//    public StringSchema minLength(int minLength) {
-//        rules.put("minLength", x -> ((String) x).length() >= minLength);
-//        return this;
-//    }
+    public StringSchema minLength(int minLength) {
+        super.addRule("minLength", x -> ((String) x).length() >= minLength);
+        return this;
+    }
 
     public StringSchema contains(String requiredString) {
         super.addRule("contains", x -> ((String) x).contains(requiredString));
