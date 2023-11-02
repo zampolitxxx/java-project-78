@@ -13,18 +13,12 @@ public class BaseSchema {
         nullable = true;
     }
 
+    /**
+     *
+     * @return
+     */
     public BaseSchema required() {
         nullable = false;
-        return this;
-    }
-
-//    public StringSchema minLength(int minLength) {
-//        rules.put("minLength", x -> ((String) x).length() >= minLength);
-//        return this;
-//    }
-
-    public BaseSchema contains(String requiredString) {
-        rules.put("isContaine", x -> ((String) x).contains(requiredString));
         return this;
     }
 
@@ -36,7 +30,7 @@ public class BaseSchema {
                 .allMatch(predicate -> predicate.test(obj));
     }
 
-    public void addRule(String ruleName, Predicate predicate) {
+    public final void addRule(String ruleName, Predicate predicate) {
         this.rules.put(ruleName, predicate);
     }
 }
