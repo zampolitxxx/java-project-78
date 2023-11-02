@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 //import hexlet.code.schemas.BaseSchema;
 
-public class NumberSchema extends BaseSchema {
+public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
         super();
