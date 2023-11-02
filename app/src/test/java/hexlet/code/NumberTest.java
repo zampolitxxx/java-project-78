@@ -43,8 +43,8 @@ class NumberTest {
         assertTrue(schema.range(5, 10).isValid(6));
         assertTrue(schema.isValid(7));
         assertTrue(schema.isValid(9));
-        assertFalse(schema.isValid(5));
-        assertFalse(schema.isValid(10));
+        assertFalse(schema.isValid(4));
+        assertFalse(schema.isValid(11));
     }
 }
 

@@ -23,7 +23,7 @@ public class NumberSchema extends BaseSchema {
 
     public BaseSchema range(int min, int max) {
         this.addRule("range", obj ->
-                obj == null || obj instanceof Integer integer && (min < integer && integer < max));
+                obj == null || obj instanceof Integer integer && (min <= integer && integer <= max));
         return this;
     }
 }
