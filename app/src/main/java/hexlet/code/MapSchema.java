@@ -20,4 +20,13 @@ public class MapSchema extends BaseSchema {
         Predicate<Map<Object, Object>> predicate = (x -> x.size() == size);
         this.addRule("mapSize", predicate);
     }
+
+    public BaseSchema shape(Map<String, BaseSchema> schemas) {
+        Predicate<Map<Object, Object>> predicate = value -> schemas.entrySet().stream().allMatch(e -> {
+            Object v = ((Map<?, ?>) value).get(e.getKey());
+            return e.getValue().isValid(v);
+        });
+        addRule("shape", predicate);
+        return this;
+    }
 }
