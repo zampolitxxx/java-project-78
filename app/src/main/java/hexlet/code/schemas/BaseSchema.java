@@ -15,10 +15,10 @@ public class BaseSchema {
 
     /**
      *
-     * @return
+     * @return BaseSchema object
      */
     public BaseSchema required() {
-        nullable = false;
+        this.nullable = false;
         return this;
     }
 
