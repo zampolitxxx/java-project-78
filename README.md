@@ -13,4 +13,21 @@
 3) Map
 
 ### Использование:
+1) Подготовка библиотеки:
 
+1.1) Клонируем репозиторий командой
+
+`git clone https://github.com/zampolitxxx/java-project-78`
+
+1.2) Переходим в директорию app и создаем jar файл:
+```
+$ cd app
+$ gradle build
+```
+Файл будет находится в директории java-project-78/app/build/libs/
+или просто скачиваем jar-файл из репозитория
+2) Запускаем jshell и импортируем библиотеку:
+```
+$ jshell --class-path app-1.0-SNAPSHOT.jar
+jshell> import hexlet.code.*
+```
