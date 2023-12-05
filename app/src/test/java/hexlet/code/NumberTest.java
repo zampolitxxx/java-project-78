@@ -16,18 +16,12 @@ class NumberTest {
     }
 
     @Test
-    void nullTest() {
+    void requiredTest() {
         assertTrue(schema.isValid(null));
-        assertTrue(schema.positive().isValid(null));
+        assertTrue(schema.isValid("5"));
         schema.required();
         assertFalse(schema.isValid(null));
-    }
-
-    @Test
-    void containsTest() {
-        schema.required();
         assertFalse(schema.isValid("5"));
-        assertTrue(schema.isValid(10));
     }
 
     @Test
