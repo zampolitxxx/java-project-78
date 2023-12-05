@@ -28,8 +28,8 @@ class NumberTest {
     void positiveTest() {
         assertTrue(schema.positive().isValid(null));
         schema.required();
-        assertFalse(schema.positive().isValid(-10));
-        assertFalse(schema.positive().isValid(0));
+        assertFalse(schema.isValid(-10));
+        assertFalse(schema.isValid(0));
     }
 
     @Test
