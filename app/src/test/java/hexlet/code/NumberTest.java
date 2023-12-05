@@ -30,6 +30,7 @@ class NumberTest {
         assertTrue(schema.isValid(null));
         schema.required();
         assertFalse(schema.isValid(-10));
+        assertTrue(schema.isValid(10));
         assertFalse(schema.isValid(0));
     }
 
