@@ -16,7 +16,7 @@ class NumberTest {
     }
 
     @Test
-    void requiredTest() {
+    void requiredSchemaTest() {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid("5"));
         schema.required();
@@ -25,7 +25,7 @@ class NumberTest {
     }
 
     @Test
-    void positiveTest() {
+    void positiveSchemaTest() {
         schema.positive();
         assertTrue(schema.isValid(null));
         schema.required();
@@ -35,7 +35,7 @@ class NumberTest {
     }
 
     @Test
-    void rangeTest() {
+    void rangeSchemaTest() {
         schema.range(5, 10);
         assertTrue(schema.isValid(5));
         assertTrue(schema.isValid(9));

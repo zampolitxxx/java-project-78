@@ -22,19 +22,19 @@ class MapTest {
     }
 
     @Test
-    void nullTest() {
+    void nullSchemaTest() {
         assertTrue(schema.isValid(null));
         schema.required();
         assertFalse(schema.isValid(null));
     }
 
     @Test
-    void newMapTest() {
+    void newMapSchemaTest() {
         assertTrue(schema.isValid(new HashMap()));
     }
 
     @Test
-    void sizeofTest() {
+    void sizeofSchemaTest() {
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertTrue(schema.isValid(data));
@@ -45,7 +45,7 @@ class MapTest {
     }
 
     @Test
-    void shapeTest() {
+    void shapeSchemaTest() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
