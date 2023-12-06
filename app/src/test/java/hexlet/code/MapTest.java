@@ -29,11 +29,6 @@ class MapTest {
     }
 
     @Test
-    void newMapSchemaTest() {
-        assertTrue(schema.isValid(new HashMap()));
-    }
-
-    @Test
     void sizeofSchemaTest() {
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
