@@ -27,10 +27,9 @@ class StringSchemaTest {
 
     @Test
     void containsSchemaTest() {
-        assertTrue(schema.contains("wh").isValid("what does the fox say"));
-        assertTrue(schema.contains("what").isValid("what does the fox say"));
-        assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
-        assertFalse(schema.isValid("what does the fox say"));
+        schema.contains("what");
+        assertTrue(schema.isValid("what does the fox say"));
+        assertFalse(schema.isValid("wha does the fox say"));
     }
 
     @Test
