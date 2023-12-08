@@ -18,7 +18,7 @@ class NumberSchemaTest {
     @Test
     void requiredSchemaTest() {
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid("5"));
+        assertTrue(schema.positive().isValid(null));
         schema.required();
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid("5"));
