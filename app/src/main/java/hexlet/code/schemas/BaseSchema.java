@@ -8,7 +8,7 @@ public class BaseSchema {
     private Map<String, Predicate> rules;
     private boolean nullable;
 
-    public BaseSchema() {
+    protected BaseSchema() {
         rules = new HashMap<>();
         nullable = true;
     }
@@ -17,7 +17,7 @@ public class BaseSchema {
      *
      * @return BaseSchema object
      */
-    public BaseSchema required() {
+    protected BaseSchema required() {
         this.nullable = false;
         return this;
     }
