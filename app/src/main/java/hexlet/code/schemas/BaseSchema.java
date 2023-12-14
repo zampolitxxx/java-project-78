@@ -1,15 +1,15 @@
 package hexlet.code.schemas;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.function.Predicate;
 
 public class BaseSchema {
-    private Map<String, Predicate> rules;
+    private List<Predicate<Object>> rules;
     private boolean nullable;
 
     protected BaseSchema() {
-        rules = new HashMap<>();
+        rules = new ArrayList<>();
         nullable = true;
     }
 
@@ -23,14 +23,15 @@ public class BaseSchema {
     }
 
     public final boolean isValid(Object obj) {
-        if (obj == null || obj.equals("")) {
-            return nullable;
+        for (Predicate<Object> pr : rules) {
+            if (!pr.test(obj)) {
+                return false;
+            }
         }
-        return rules.values().stream()
-                .allMatch(predicate -> predicate.test(obj));
+        return true;
     }
 
-    public final void addRule(String ruleName, Predicate predicate) {
-        this.rules.put(ruleName, predicate);
+    protected final void addRule(Predicate<Object> predicate) {
+        this.rules.add(predicate);
     }
 }

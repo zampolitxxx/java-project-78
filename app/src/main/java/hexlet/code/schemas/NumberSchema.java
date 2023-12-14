@@ -5,25 +5,30 @@ package hexlet.code.schemas;
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
-        super();
+        super.required();
     }
 
     @Override
     public BaseSchema required() {
-        super.required();
-        super.addRule("required1", Integer.class::isInstance);
+        super.addRule(Integer.class::isInstance);
         return this;
     }
 
-    public BaseSchema positive() {
-        this.addRule("positive", obj ->
-            obj == null || obj instanceof Integer integer && integer > 0);
+    public final NumberSchema positive() {
+        addRule(obj -> obj == null
+                || obj instanceof Number
+                && (int) obj > 0
+        );
         return this;
     }
 
-    public BaseSchema range(int min, int max) {
-        this.addRule("range", obj ->
-                obj == null || obj instanceof Integer integer && (min <= integer && integer <= max));
+    public final NumberSchema range(int startRange, int endRange) {
+        addRule(obj -> obj == null
+                || obj instanceof Number
+                && (int) obj >= startRange
+                && (int) obj <= endRange
+        );
         return this;
     }
+
 }

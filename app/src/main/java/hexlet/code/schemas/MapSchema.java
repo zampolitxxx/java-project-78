@@ -6,27 +6,34 @@ import java.util.function.Predicate;
 public final class MapSchema extends BaseSchema {
 
     public MapSchema() {
-        super();
+        super.required();
     }
 
     @Override
-    public MapSchema required() {
-        super.required();
-        super.addRule("required", Map.class::isInstance);
+    public final MapSchema required() {
+        addRule(obj -> obj instanceof Map);
         return this;
     }
 
-    public void sizeof(Integer size) {
-        Predicate<Map<Object, Object>> predicate = (x -> x.size() == size);
-        this.addRule("mapSize", predicate);
+    public MapSchema sizeof(Integer size) {
+        addRule(obj -> obj == null
+                || obj instanceof Map
+                && ((Map) obj).size() == size
+        );
+        return this;
     }
 
-    public BaseSchema shape(Map<String, BaseSchema> schemas) {
-        Predicate<Map<Object, Object>> predicate = value -> schemas.entrySet().stream().allMatch(e -> {
-            Object v = ((Map<?, ?>) value).get(e.getKey());
-            return e.getValue().isValid(v);
-        });
-        addRule("shape", predicate);
+    public final MapSchema shape(Map<String, BaseSchema> schemas) {
+        for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
+            String key = entry.getKey();
+            BaseSchema schema = entry.getValue();
+
+            addRule(obj -> obj == null
+                    || obj instanceof Map
+                    && schema.isValid(((Map) obj).get(key))
+            );
+        }
+
         return this;
     }
 }

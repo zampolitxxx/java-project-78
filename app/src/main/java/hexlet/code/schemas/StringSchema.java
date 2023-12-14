@@ -3,23 +3,30 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
-        super();
+        super.required();
     }
 
     @Override
     public StringSchema required() {
-        super.required();
-        super.addRule("required", String.class::isInstance);
+        super.addRule(String.class::isInstance);
         return this;
     }
 
-    public StringSchema minLength(int minLength) {
-        super.addRule("minLength", x -> ((String) x).length() >= minLength);
+    public final StringSchema minLength(int minLength) {
+        addRule(obj -> obj == null
+                || obj instanceof String
+                && ((String) obj).length() >= minLength
+        );
+
         return this;
     }
 
-    public StringSchema contains(String requiredString) {
-        super.addRule("contains", x -> ((String) x).contains(requiredString));
+    public final StringSchema contains(String pattern) {
+        addRule(obj -> obj == null
+                || obj instanceof String
+                && ((String) obj).contains(pattern)
+        );
+
         return this;
     }
 }
