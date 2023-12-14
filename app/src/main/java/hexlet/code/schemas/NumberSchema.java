@@ -14,7 +14,7 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public final NumberSchema positive() {
+    public NumberSchema positive() {
         addRule(obj -> obj == null
                 || obj instanceof Number
                 && (int) obj > 0
@@ -22,7 +22,7 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public final NumberSchema range(int startRange, int endRange) {
+    public NumberSchema range(int startRange, int endRange) {
         addRule(obj -> obj == null
                 || obj instanceof Number
                 && (int) obj >= startRange

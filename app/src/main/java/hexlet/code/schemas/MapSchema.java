@@ -1,7 +1,6 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
-import java.util.function.Predicate;
 
 public final class MapSchema extends BaseSchema {
 
@@ -10,7 +9,7 @@ public final class MapSchema extends BaseSchema {
     }
 
     @Override
-    public final MapSchema required() {
+    public MapSchema required() {
         addRule(obj -> obj instanceof Map);
         return this;
     }
@@ -23,7 +22,7 @@ public final class MapSchema extends BaseSchema {
         return this;
     }
 
-    public final MapSchema shape(Map<String, BaseSchema> schemas) {
+    public MapSchema shape(Map<String, BaseSchema> schemas) {
         for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
             String key = entry.getKey();
             BaseSchema schema = entry.getValue();
