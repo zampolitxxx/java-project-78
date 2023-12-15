@@ -8,16 +8,17 @@ public final class StringSchema extends BaseSchema {
 
     @Override
     public StringSchema required() {
-        super.addRule(String.class::isInstance);
+        super.addRule(obj -> obj instanceof String
+                && !((String) obj).isEmpty()
+        );
         return this;
     }
 
     public StringSchema minLength(int minLength) {
-        addRule(obj -> obj == null
-                || obj instanceof String
+        addRule(obj -> (obj == null
+                || obj instanceof String)
                 && ((String) obj).length() >= minLength
         );
-
         return this;
     }
 
