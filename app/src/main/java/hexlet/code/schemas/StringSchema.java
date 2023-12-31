@@ -3,7 +3,6 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
-        super.required();
     }
 
     @Override

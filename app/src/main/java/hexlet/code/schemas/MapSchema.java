@@ -5,7 +5,6 @@ import java.util.Map;
 public final class MapSchema extends BaseSchema {
 
     public MapSchema() {
-        super.required();
     }
 
     @Override
