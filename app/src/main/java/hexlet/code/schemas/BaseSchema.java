@@ -6,11 +6,9 @@ import java.util.function.Predicate;
 
 public class BaseSchema {
     private List<Predicate<Object>> rules;
-    private boolean nullable;
 
     protected BaseSchema() {
         rules = new ArrayList<>();
-        nullable = true;
     }
 
     /**
@@ -18,7 +16,6 @@ public class BaseSchema {
      * @return BaseSchema object
      */
     protected BaseSchema required() {
-        this.nullable = false;
         return this;
     }
 
