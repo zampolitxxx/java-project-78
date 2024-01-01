@@ -9,7 +9,7 @@ public final class NumberSchema extends BaseSchema {
 
     @Override
     public BaseSchema required() {
-        super.addRule(Integer.class::isInstance);
+        super.addRule(obj -> obj != null);
         return this;
     }
 

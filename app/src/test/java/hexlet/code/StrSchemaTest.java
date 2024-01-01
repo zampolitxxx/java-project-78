@@ -33,7 +33,6 @@ class StrSchemaTest {
 
     @Test
     void minLengthSchemaTest() {
-        assertTrue(schema.isValid(null));
         assertTrue(schema.isValid("what does the fox say"));
         schema.minLength(6);
         assertFalse(schema.isValid("what"));

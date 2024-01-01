@@ -9,7 +9,7 @@ public final class MapSchema extends BaseSchema {
 
     @Override
     public MapSchema required() {
-        addRule(obj -> obj instanceof Map);
+        addRule(obj -> obj != null);
         return this;
     }
 

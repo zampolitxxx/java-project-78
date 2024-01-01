@@ -3,12 +3,12 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
-        super.addRule(String.class::isInstance);
     }
 
     @Override
     public StringSchema required() {
-        super.addRule(obj -> !((String) obj).isEmpty()
+        super.addRule(obj -> obj != null
+                && !((String) obj).isEmpty()
         );
         return this;
     }
