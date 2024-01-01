@@ -8,9 +8,8 @@ public final class MapSchema extends BaseSchema {
     }
 
     @Override
-    public MapSchema required() {
-        addRule(obj -> obj != null);
-        return this;
+    public BaseSchema required() {
+        return super.required();
     }
 
     public MapSchema sizeof(Integer size) {

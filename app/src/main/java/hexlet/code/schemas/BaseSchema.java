@@ -16,6 +16,7 @@ public class BaseSchema {
      * @return BaseSchema object
      */
     protected BaseSchema required() {
+        addRule(obj -> obj != null);
         return this;
     }
 
