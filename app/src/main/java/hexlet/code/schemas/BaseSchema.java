@@ -21,12 +21,8 @@ public class BaseSchema {
     }
 
     public final boolean isValid(Object obj) {
-        for (Predicate<Object> pr : rules) {
-            if (!pr.test(obj)) {
-                return false;
-            }
-        }
-        return true;
+        return rules.stream()
+                .allMatch(x -> x.test(obj));
     }
 
     protected final void addRule(Predicate<Object> predicate) {
