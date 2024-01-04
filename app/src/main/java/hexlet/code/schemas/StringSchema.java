@@ -3,6 +3,7 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
+        addRule(v -> v == null || v instanceof String);
     }
 
     @Override
@@ -14,19 +15,14 @@ public final class StringSchema extends BaseSchema {
     }
 
     public StringSchema minLength(int minLength) {
-        addRule(obj -> (obj == null
-                || obj instanceof String)
-                && ((String) obj).length() >= minLength
+        addRule(obj -> ((String) obj).length() >= minLength
         );
         return this;
     }
 
     public StringSchema contains(String pattern) {
-        addRule(obj -> obj == null
-                || obj instanceof String
-                && ((String) obj).contains(pattern)
+        addRule(obj -> ((String) obj).contains(pattern)
         );
-
         return this;
     }
 }

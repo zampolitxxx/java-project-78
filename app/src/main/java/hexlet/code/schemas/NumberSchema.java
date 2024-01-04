@@ -5,12 +5,11 @@ package hexlet.code.schemas;
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
+        addRule(v -> v == null || v instanceof Integer);
     }
 
-    @Override
     public BaseSchema required() {
-        super.addRule(obj -> obj != null);
-        return this;
+        return super.required();
     }
 
     public NumberSchema positive() {

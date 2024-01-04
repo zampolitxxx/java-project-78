@@ -5,17 +5,15 @@ import java.util.Map;
 public final class MapSchema extends BaseSchema {
 
     public MapSchema() {
+        addRule(v -> v == null || v instanceof Map);
     }
 
-    @Override
     public BaseSchema required() {
         return super.required();
     }
 
     public MapSchema sizeof(Integer size) {
-        addRule(obj -> obj == null
-                || obj instanceof Map
-                && ((Map) obj).size() == size
+        addRule(obj -> ((Map) obj).size() == size
         );
         return this;
     }
@@ -25,12 +23,9 @@ public final class MapSchema extends BaseSchema {
             String key = entry.getKey();
             BaseSchema schema = entry.getValue();
 
-            addRule(obj -> obj == null
-                    || obj instanceof Map
-                    && schema.isValid(((Map) obj).get(key))
+            addRule(obj -> schema.isValid(((Map) obj).get(key))
             );
         }
-
         return this;
     }
 }
