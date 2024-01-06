@@ -27,6 +27,7 @@ class StrSchemaTest {
     @Test
     void containsSchemaTest() {
         schema.contains("what");
+        assertTrue(schema.isValid(null));
         assertTrue(schema.isValid("what does the fox say"));
         assertFalse(schema.isValid("wha does the fox say"));
     }
@@ -35,6 +36,7 @@ class StrSchemaTest {
     void minLengthSchemaTest() {
         assertTrue(schema.isValid("what does the fox say"));
         schema.minLength(6);
+        assertTrue(schema.isValid(null));
         assertFalse(schema.isValid("what"));
         assertTrue(schema.isValid("what does the fox say"));
     }

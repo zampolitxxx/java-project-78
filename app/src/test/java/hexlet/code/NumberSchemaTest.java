@@ -37,6 +37,7 @@ class NumberSchemaTest {
     @Test
     void rangeSchemaTest() {
         schema.range(5, 10);
+        assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(5));
         assertTrue(schema.isValid(9));
         assertFalse(schema.isValid(4));
