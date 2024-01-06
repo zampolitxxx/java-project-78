@@ -13,18 +13,15 @@ public final class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema positive() {
-        addRule(obj -> obj == null
-                || obj instanceof Integer
-                && (int) obj > 0
+        addRule(v -> v == null || (int) v > 0
         );
         return this;
     }
 
     public NumberSchema range(int startRange, int endRange) {
-        addRule(obj -> obj == null
-                || obj instanceof Integer
-                && (int) obj >= startRange
-                && (int) obj <= endRange
+        addRule(v -> v == null
+                || (int) v >= startRange
+                && (int) v <= endRange
         );
         return this;
     }

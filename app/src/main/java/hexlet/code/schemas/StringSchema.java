@@ -8,20 +8,20 @@ public final class StringSchema extends BaseSchema {
 
     @Override
     public StringSchema required() {
-        super.addRule(obj -> obj != null
-                && !((String) obj).isEmpty()
+        super.addRule(v -> v != null
+                && !((String) v).isEmpty()
         );
         return this;
     }
 
     public StringSchema minLength(int minLength) {
-        addRule(obj -> ((String) obj).length() >= minLength
+        addRule(v -> v == null || ((String) v).length() >= minLength
         );
         return this;
     }
 
     public StringSchema contains(String pattern) {
-        addRule(obj -> ((String) obj).contains(pattern)
+        addRule(v -> v == null || ((String) v).contains(pattern)
         );
         return this;
     }

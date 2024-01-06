@@ -13,7 +13,7 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema sizeof(Integer size) {
-        addRule(obj -> ((Map) obj).size() == size
+        addRule(v -> v == null || ((Map) v).size() == size
         );
         return this;
     }
@@ -23,7 +23,7 @@ public final class MapSchema extends BaseSchema {
             String key = entry.getKey();
             BaseSchema schema = entry.getValue();
 
-            addRule(obj -> schema.isValid(((Map) obj).get(key))
+            addRule(v -> v == null || schema.isValid(((Map) v).get(key))
             );
         }
         return this;

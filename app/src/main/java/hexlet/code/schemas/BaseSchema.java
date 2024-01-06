@@ -16,13 +16,13 @@ public class BaseSchema {
      * @return BaseSchema object
      */
     protected BaseSchema required() {
-        addRule(obj -> obj != null);
+        addRule(v -> v != null);
         return this;
     }
 
-    public final boolean isValid(Object obj) {
+    public final boolean isValid(Object v) {
         return rules.stream()
-                .allMatch(x -> x.test(obj));
+                .allMatch(x -> x.test(v));
     }
 
     protected final void addRule(Predicate<Object> predicate) {
